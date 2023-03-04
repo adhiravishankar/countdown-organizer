@@ -1,7 +1,7 @@
 import {Express} from "express";
-import {CologneModel} from "./Cologne";
 import {IncomingMessage, NextFunction} from "connect";
 import {ServerResponse} from "http";
+import {EventModel} from "./Event";
 
 export type NextHandleFunction = (req: IncomingMessage, res: ServerResponse, next: NextFunction) => void;
 
@@ -12,7 +12,7 @@ export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
     });
 
     app.get('/colognes', (request, response) => {
-        const colognes = CologneModel.find();
+        const colognes = EventModel.find();
         response.json(colognes);
     });
 
@@ -22,7 +22,7 @@ export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
 
     app.get('/colognes/:cologne', (request, response) => {
         const cologneID: string = request.params.cologne as string;
-        const cologne = CologneModel.findById(cologneID);
+        const cologne = EventModel.findById(cologneID);
         response.json(cologne);
     });
 
@@ -32,7 +32,7 @@ export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
 
     app.delete('/colognes/:cologne', (request, response) => {
         const cologneID: string = request.params.cologne as string;
-        const success = CologneModel.findByIdAndDelete(cologneID);
+        const success = EventModel.findByIdAndDelete(cologneID);
         response.json(success);
     });
 
@@ -42,7 +42,7 @@ export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
 
     app.delete('/attributes/:attribute', (request, response) => {
         const attributeID: string = request.params.attribute as string;
-        const success = CologneModel.findByIdAndDelete(attributeID);
+        const success = EventModel.findByIdAndDelete(attributeID);
         response.json(success);
     });
 };
