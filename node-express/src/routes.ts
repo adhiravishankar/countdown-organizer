@@ -1,8 +1,15 @@
 import {Express} from "express";
-import {NextHandleFunction} from "./base";
-import {CologneModel} from "../models/Cologne";
+import {CologneModel} from "./Cologne";
+import {IncomingMessage, NextFunction} from "connect";
+import {ServerResponse} from "http";
 
-export const cologneRoutes = (app: Express, urlEncodedParser: NextHandleFunction) => {
+export type NextHandleFunction = (req: IncomingMessage, res: ServerResponse, next: NextFunction) => void;
+
+export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
+
+    app.get('/about', (request, response) => {
+        response.json({ "Language": "Go", "Framework": "Gin", "Database": "Mongo", "Cloud": "AWS" });
+    });
 
     app.get('/colognes', (request, response) => {
         const colognes = CologneModel.find();

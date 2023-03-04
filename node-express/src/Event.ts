@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 import {ObjectId} from "mongodb";
 
-export interface Cologne {
+export interface Event {
     _id: string;
 
     name: string;
@@ -14,12 +14,11 @@ export interface Cologne {
 }
 
 
-export const CologneSchema = new Schema({
+export const EventSchema = new Schema({
     _id: ObjectId,
     name: String,
-    purchased: Boolean,
+    date: String,
     picture: String,
-    manufacturerID: String,
 });
 
-export const CologneModel = mongoose.model('Cologne', CologneSchema);
+export const EventModel = mongoose.model('Event', EventSchema);
