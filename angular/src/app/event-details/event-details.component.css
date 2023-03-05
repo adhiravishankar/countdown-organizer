@@ -1,0 +1,19 @@
+.picture-card-text {
+  position: absolute;
+  background: #000000AA;
+  color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  left: 1rem;
+  bottom: 1rem;
+}
+
+.picture-card-title {
+  margin: 0;
+  pointer-events: none;
+}
+
+.picture-card-date {
+  margin: 0;
+  pointer-events: none;
+}

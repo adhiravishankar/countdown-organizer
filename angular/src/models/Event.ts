@@ -9,4 +9,6 @@ export interface Event {
     picture: string;
 
     manufacturerID: string;
+
+    fullDay: boolean;
 }

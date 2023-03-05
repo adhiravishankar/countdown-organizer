@@ -9,6 +9,12 @@ import { HomeEventItemComponent } from '../home-event-item/home-event-item.compo
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from "@angular/material/card";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -21,12 +27,18 @@ import {PageNotFoundComponent} from "../page-not-found/page-not-found.component"
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'events/:id', component: EventDetailsComponent },
-      { path: '**', component: PageNotFoundComponent }
+      {path: '', component: HomeComponent},
+      {path: 'events/:id', component: EventDetailsComponent},
+      {path: '**', component: PageNotFoundComponent}
     ]),
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTabsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

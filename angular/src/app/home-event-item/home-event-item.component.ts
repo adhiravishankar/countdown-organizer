@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-home-event-item',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-event-item.component.css']
 })
 export class HomeEventItemComponent {
+
+  @Input() event?: Event;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }
