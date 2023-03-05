@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import { Event } from '../../models/Event';
 
 @Component({
   selector: 'app-home-event-item',
@@ -6,6 +7,8 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./home-event-item.component.css']
 })
 export class HomeEventItemComponent {
+
+  @Input() id?: string;
 
   @Input() event?: Event;
 

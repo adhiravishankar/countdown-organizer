@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {EventStore} from "../stores/EventStore";
+import { Event } from '../../models/Event';
 
 @Component({
   selector: 'app-event-details',
@@ -9,9 +11,14 @@ import {ActivatedRoute} from "@angular/router";
 export class EventDetailsComponent {
   id?: string | null;
 
-  constructor(private route: ActivatedRoute) {  }
+  event?: Event;
+
+  constructor(private route: ActivatedRoute, public eventStore: EventStore) {  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id != null) {
+      this.event = this.eventStore.getEvent(this.id);
+    }
   }
 }

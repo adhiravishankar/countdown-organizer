@@ -1,7 +1,7 @@
 <mat-card>
   <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let event of events">
-      <app-home-event-item [event]="event"></app-home-event-item>
+    <mat-grid-tile *ngFor="let event of events | keyvalue">
+      <app-home-event-item [id]="event.key" [event]="event.value"></app-home-event-item>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>

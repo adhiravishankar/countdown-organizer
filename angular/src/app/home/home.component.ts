@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
+import {EventStore} from "../stores/EventStore";
+import { Event } from "../../models/Event";
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,9 @@ import {Component, Input} from '@angular/core';
 })
 export class HomeComponent {
 
-  @Input() events?: Event[];
+  events: Map<string, Event>;
 
+  constructor(public eventStore: EventStore) {
+    this.events = this.eventStore.getEvents();
+  }
 }

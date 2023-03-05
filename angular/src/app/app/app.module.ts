@@ -15,6 +15,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {NgSimpleStateModule} from "ng-simple-state";
+import {environment} from "../../environments/environment";
+import {EventStore} from "../stores/EventStore";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,10 @@ import {MatGridListModule} from "@angular/material/grid-list";
       {path: 'events/:id', component: EventDetailsComponent},
       {path: '**', component: PageNotFoundComponent}
     ]),
+    NgSimpleStateModule.forRoot({
+      enableDevTool: !environment.production, // Enable Redux DevTools only in development mode
+      enableLocalStorage: false // Local storage state persistence is globally disabled
+    }),
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
@@ -40,7 +47,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatTabsModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [EventStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
