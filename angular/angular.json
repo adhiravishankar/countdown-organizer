@@ -52,7 +52,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": []
             }
           },
           "defaultConfiguration": "production"
@@ -93,11 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "8aa25f9f-61d8-4c07-aae6-7c9b7967ae1a"
+    "analytics": "8aa25f9f-61d8-4c07-aae6-7c9b7967ae1a",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
