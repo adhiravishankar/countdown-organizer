@@ -18,6 +18,11 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {NgSimpleStateModule} from "ng-simple-state";
 import {environment} from "../../environments/environment";
 import {EventStore} from "../stores/EventStore";
+import { AddNewEventComponent } from '../add-new-event/add-new-event.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -25,6 +30,7 @@ import {EventStore} from "../stores/EventStore";
     HomeComponent,
     EventDetailsComponent,
     HomeEventItemComponent,
+    AddNewEventComponent,
     PageNotFoundComponent,
   ],
   imports: [
@@ -45,7 +51,11 @@ import {EventStore} from "../stores/EventStore";
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [EventStore],
   bootstrap: [AppComponent]

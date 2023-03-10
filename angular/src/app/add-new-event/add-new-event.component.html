@@ -1,1 +1,21 @@
-<p>add-new-event works!</p>
+<h1 mat-dialog-title>Add New Event</h1>
+<form>
+  <div mat-dialog-content>
+    <p>Add a new event to the calendar.</p>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Event name">
+      </mat-form-field>
+    </div>
+    <div class="full-day-checkbox"><mat-checkbox>Full Day</mat-checkbox></div>
+    <div>
+      <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+      <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+      <span class="file-name">{{selectedFile?.name}}</span>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close cdkFocusInitial>Submit</button>
+  </div>
+</form>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "helmet": "^6.0.1",
@@ -25,7 +26,6 @@
     "@types/morgan": "^1.9.4",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.14.4",
-    "esbuild": "^0.17.10",
     "npm-run-all": "^4.1.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"

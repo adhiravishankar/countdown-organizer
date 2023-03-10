@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
+import {APIService} from "../api/api.service";
 
 @Component({
   selector: 'app-add-new-event',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-new-event.component.css']
 })
 export class AddNewEventComponent {
+  constructor(public apiService: APIService, public dialogRef: MatDialogRef<AddNewEventComponent>) {}
+
+  selectedFile: any = null;
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] ?? null;
+  }
 
 }

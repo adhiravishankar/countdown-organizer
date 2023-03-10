@@ -2,7 +2,7 @@ import {Express} from "express";
 import {IncomingMessage, NextFunction} from "connect";
 import {ServerResponse} from "http";
 import {EventModel} from "./Event";
-import v4 from 'uuid';
+
 export type NextHandleFunction = (req: IncomingMessage, res: ServerResponse, next: NextFunction) => void;
 
 export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
@@ -17,7 +17,9 @@ export const routes = (app: Express, urlEncodedParser: NextHandleFunction) => {
     });
 
     app.post('/events', urlEncodedParser, (request, response) => {
-        response.json(request)
+        // parse an event from the request body
+        // const event = request.body as EventModel;
+        response.json(request.body)
     });
 
     app.get('/events/:event', (request, response) => {

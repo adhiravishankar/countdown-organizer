@@ -9,12 +9,12 @@ import {Observable} from "rxjs";
 export class APIService {
   constructor(private http: HttpClient) { }
 
-  addEvent(id: string): Observable<boolean> {
-    return this.http.get<boolean>(environment.apiURL + "/events/" + id);
+  addEvent(name: string, picture: string, fullDay: boolean): Observable<boolean> {
+    return this.http.post<boolean>(environment.apiURL + "/events/", {name, picture, fullDay});
   }
 
   deleteEvent(id: string): Observable<boolean> {
-    return this.http.get<boolean>(environment.apiURL + "/events/" + id);
+    return this.http.delete<boolean>(environment.apiURL + "/events/" + id);
   }
 
 

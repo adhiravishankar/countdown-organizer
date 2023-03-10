@@ -6,11 +6,7 @@ export interface Event {
 
     name: string;
 
-    purchased: boolean;
-
     picture: string;
-
-    manufacturerID: string;
 }
 
 
