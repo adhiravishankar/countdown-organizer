@@ -1,7 +1,9 @@
-<mat-card class="small-picture-card">
-  <img src="https://commencement.iu.edu/images/commencement-iu-banner-2.jpg" alt="" />
-  <div class="small-picture-card-text">
-    <p class="small-picture-card-title">IU Commencement</p>
-    <p class="small-picture-card-date">Sunday March 23, 2023</p>
-  </div>
-</mat-card>
+<a routerLink="events/{{ event?._id }}">
+  <mat-card class="small-picture-card">
+    <img src="{{ event?.picture }}" alt="" />
+    <div class="small-picture-card-text">
+      <p class="small-picture-card-title">{{ event?.name }}</p>
+      <p class="small-picture-card-date">{{ dateString }}</p>
+    </div>
+  </mat-card>
+</a>

@@ -4,6 +4,8 @@ export interface Event {
 
     name: string;
 
+    date: Date;
+
     picture: string;
 
     fullDay: boolean;

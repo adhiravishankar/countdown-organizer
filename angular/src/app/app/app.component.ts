@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'Event Countdown';
 
   constructor(public eventStore: EventStore, public dialog: MatDialog) {
-    this.eventStore.fetchEvents();
+    // this.eventStore.fetchEvents();
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

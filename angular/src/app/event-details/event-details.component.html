@@ -1,7 +1,7 @@
 <mat-card class="picture-card">
-  <img src="https://commencement.iu.edu/images/commencement-iu-banner-2.jpg" alt="" />
+  <img src="{{ event?.picture }}" alt="" />
   <div class="picture-card-text">
-    <p class="picture-card-title">IU Commencement</p>
-    <p class="picture-card-date">Sunday March 23, 2023</p>
+    <p class="picture-card-title">{{ event?.name }}</p>
+    <p class="picture-card-date">{{ dateString }}</p>
   </div>
 </mat-card>

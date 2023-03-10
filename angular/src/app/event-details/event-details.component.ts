@@ -13,6 +13,8 @@ export class EventDetailsComponent {
 
   event?: Event;
 
+  dateString?: string;
+
   constructor(private route: ActivatedRoute, public eventStore: EventStore) {  }
 
   ngOnInit(): void {
@@ -20,5 +22,6 @@ export class EventDetailsComponent {
     if (this.id != null) {
       this.event = this.eventStore.getEvent(this.id);
     }
+    this.dateString = this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString()
   }
 }

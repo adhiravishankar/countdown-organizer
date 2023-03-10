@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {EventStore} from "../stores/EventStore";
 import { Event } from "../../models/Event";
-import {MatDialog} from "@angular/material/dialog";
-import {AddNewEventComponent} from "../add-new-event/add-new-event.component";
 
 @Component({
   selector: 'app-home',

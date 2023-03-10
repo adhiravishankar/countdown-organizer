@@ -12,9 +12,12 @@ export class HomeEventItemComponent {
 
   @Input() event?: Event;
 
+  dateString?: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.dateString = this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString()
   }
 
 }
