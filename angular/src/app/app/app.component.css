@@ -1,3 +1,15 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+a span {
+  color: #fff;
+  text-decoration-line: none;
+  text-decoration-color: unset;
+  text-underline: none;
+  text-underline-mode: none;
+}
+
+.app-container {
+  margin-top: 1rem;
+}

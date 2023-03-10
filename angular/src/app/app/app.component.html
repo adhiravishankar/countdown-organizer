@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>{{ title }}</span>
+  <a routerLink=""><span>{{ title }}</span></a>
   <span class="example-spacer"></span>
   <button mat-icon-button class="add-icon" aria-label="Add icon" (click)="openDialog('0ms', '0ms')">
     <mat-icon>add_box</mat-icon>
@@ -7,6 +7,6 @@
 </mat-toolbar>
 
 
-<div class="container">
+<div class="container app-container">
   <router-outlet></router-outlet>
 </div>

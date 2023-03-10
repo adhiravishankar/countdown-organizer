@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import {Injectable, Injector} from "@angular/core";
 import {NgSimpleStateBaseStore, NgSimpleStateStoreConfig} from "ng-simple-state";
-import {Event} from "../../models/Event";
-import {environment} from "../../environments/environment";
+import {Event} from "../models/Event";
+import {environment} from "../environments/environment";
 
 export interface EventState {
   events: Map<string, Event>;

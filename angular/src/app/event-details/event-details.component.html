@@ -2,6 +2,6 @@
   <img src="{{ event?.picture }}" alt="" />
   <div class="picture-card-text">
     <p class="picture-card-title">{{ event?.name }}</p>
-    <p class="picture-card-date">{{ dateString }}</p>
+    <p class="picture-card-date" (click)="onToggleDate()">{{ dateString }}</p>
   </div>
 </mat-card>

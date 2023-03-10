@@ -4,11 +4,11 @@
     <p>Add a new event to the calendar.</p>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Event name">
+        <input matInput placeholder="Event name" [(ngModel)]="name">
       </mat-form-field>
     </div>
     <div class="full-day-checkbox"><mat-checkbox>Full Day</mat-checkbox></div>
-    <div>
+    <div class="choose-date">
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
         <input matInput [matDatepicker]="picker">
@@ -25,6 +25,6 @@
   </div>
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button mat-dialog-close cdkFocusInitial>Submit</button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="onSubmit()">Submit</button>
   </div>
 </form>

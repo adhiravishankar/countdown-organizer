@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {EventStore} from "../stores/EventStore";
+import {EventStore} from "../../stores/EventStore";
 import { Event } from "../../models/Event";
 
 @Component({

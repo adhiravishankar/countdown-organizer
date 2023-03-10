@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {EventStore} from "../stores/EventStore";
+import {EventStore} from "../../stores/EventStore";
 import {AddNewEventComponent} from "../add-new-event/add-new-event.component";
 import {MatDialog} from "@angular/material/dialog";
 

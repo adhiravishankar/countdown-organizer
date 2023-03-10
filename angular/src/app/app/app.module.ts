@@ -17,7 +17,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {NgSimpleStateModule} from "ng-simple-state";
 import {environment} from "../../environments/environment";
-import {EventStore} from "../stores/EventStore";
+import {EventStore} from "../../stores/EventStore";
 import { AddNewEventComponent } from '../add-new-event/add-new-event.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";

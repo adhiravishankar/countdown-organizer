@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {EventStore} from "../stores/EventStore";
+import {EventStore} from "../../stores/EventStore";
 import { Event } from '../../models/Event';
 
 @Component({
@@ -15,6 +15,8 @@ export class EventDetailsComponent {
 
   dateString?: string;
 
+  showDate: 'date' | 'relative' = 'date';
+
   constructor(private route: ActivatedRoute, public eventStore: EventStore) {  }
 
   ngOnInit(): void {
@@ -23,5 +25,9 @@ export class EventDetailsComponent {
       this.event = this.eventStore.getEvent(this.id);
     }
     this.dateString = this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString()
+  }
+
+  onToggleDate() {
+    this.showDate = this.showDate === 'date' ? 'relative' : 'date';
   }
 }
