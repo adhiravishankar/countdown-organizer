@@ -25,6 +25,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {EditEventComponent} from "../edit-event/edit-event.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     HomeEventItemComponent,
     AddNewEventComponent,
     PageNotFoundComponent,
+    EditEventComponent,
   ],
   imports: [
     BrowserModule,

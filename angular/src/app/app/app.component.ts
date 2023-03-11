@@ -4,6 +4,7 @@ import {AddNewEventComponent} from "../add-new-event/add-new-event.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute, NavigationEnd, Router, UrlSegment} from "@angular/router";
 import {APIService} from "../../api/api.service";
+import {EditEventComponent} from "../edit-event/edit-event.component";
 
 @Component({
   selector: 'app-root',
@@ -22,9 +23,7 @@ export class AppComponent {
     await this.eventStore.fetchEvents();
     this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
-            if (event.url.includes('/events/')) {
-              this.showDeleteIcon = true;
-            }
+            this.showDeleteIcon = event.url.includes('/events/');
         }
     });
   }
@@ -44,5 +43,6 @@ export class AppComponent {
   edit() {
     const url = this.router.url;
     const id = url.substring(url.lastIndexOf('/') + 1);
+    this.dialog.open(EditEventComponent, { data: { id }, width: '30rem', enterAnimationDuration: '0ms', exitAnimationDuration: '0ms' });
   }
 }
