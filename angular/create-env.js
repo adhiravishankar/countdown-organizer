@@ -5,7 +5,7 @@ dotenv.config();
 
 
 // Generate environment.ts file with environment variables
-fse.writeFileSync(
+fse.outputFileSync(
   './src/environments/environment.ts',
   `export const environment = {
     API_URL: '${ process.env.API_URL }',
