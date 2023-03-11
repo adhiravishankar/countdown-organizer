@@ -17,6 +17,7 @@ export class HomeEventItemComponent {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.event);
     this.dateString = this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString()
   }
 

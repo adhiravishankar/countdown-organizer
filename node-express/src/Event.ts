@@ -15,10 +15,11 @@ export interface Event {
 
 
 export const EventSchema = new Schema({
-    _id: ObjectId,
+    _id: String,
     name: String,
-    date: String,
+    date: Date,
     picture: String,
+    fullDay: Boolean,
 });
 
 export const EventModel = mongoose.model('Event', EventSchema);

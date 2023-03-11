@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
+import { Router } from '@angular/router';
 import {APIService} from "../../api/api.service";
+import {EventStore} from "../../stores/EventStore";
 
 @Component({
   selector: 'app-add-new-event',
@@ -14,16 +16,24 @@ export class AddNewEventComponent {
 
   date: Date = new Date();
 
-  constructor(public apiService: APIService, public dialogRef: MatDialogRef<AddNewEventComponent>) {}
+  selectedFile?: File = undefined;
 
-  selectedFile: any = null;
+  constructor(public apiService: APIService, private router: Router, public dialogRef: MatDialogRef<AddNewEventComponent>) {}
 
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0] ?? null;
+    this.selectedFile = event.target.files[0];
   }
 
-  onSubmit() {
-    this.apiService.addEvent(this.name, this.selectedFile, this.fullDay, this.date).then(() => this.dialogRef.close());
+  async onSubmit() {
+    if (this.selectedFile !== undefined) {
+      const response = await this.apiService.addEvent(this.name, this.selectedFile, this.fullDay, this.date);
+      response.subscribe(async (value) => {
+        if (value) {
+          await this.router.navigate(['']);
+          this.dialogRef.close();
+        }
+      });
+    }
   }
 
 }

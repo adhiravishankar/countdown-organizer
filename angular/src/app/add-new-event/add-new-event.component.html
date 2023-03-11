@@ -4,14 +4,14 @@
     <p>Add a new event to the calendar.</p>
     <div>
       <mat-form-field>
-        <input matInput placeholder="Event name" [(ngModel)]="name">
+        <input matInput placeholder="Event name" name="name" [(ngModel)]="name">
       </mat-form-field>
     </div>
-    <div class="full-day-checkbox"><mat-checkbox>Full Day</mat-checkbox></div>
+    <div class="full-day-checkbox"><mat-checkbox [(ngModel)]="fullDay" name="fullDay">Full Day</mat-checkbox></div>
     <div class="choose-date">
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput name="date" [(ngModel)]="date" [matDatepicker]="picker">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>

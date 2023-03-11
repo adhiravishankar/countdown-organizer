@@ -22,9 +22,11 @@ export class EventDetailsComponent {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id != null) {
-      this.event = this.eventStore.getEvent(this.id);
+      this.eventStore.getEvent(this.id).subscribe((event: Event) => {
+        this.event = event;
+        this.dateString = this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString()
+      });
     }
-    this.dateString = this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString()
   }
 
   onToggleDate() {

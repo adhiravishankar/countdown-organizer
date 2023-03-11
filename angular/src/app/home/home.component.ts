@@ -9,9 +9,11 @@ import { Event } from "../../models/Event";
 })
 export class HomeComponent {
 
-  events: Map<string, Event>;
+  events: Map<string, Event> | undefined;
 
   constructor(public eventStore: EventStore) {
-    this.events = this.eventStore.getEvents();
+    this.eventStore.getEvents().subscribe((state) => {
+      this.events = state.events;
+    });
   }
 }
