@@ -8,8 +8,12 @@ import {routes} from "./routes";
 
 import AWS from "@aws-sdk/client-s3";
 import multer from "multer";
+import url from "url";
 
-dotenv.config();
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+dotenv.config({ path: __dirname + './../app.env' });
 
 const mongoString = process.env.MONGODB_URL
 await mongoose.connect(mongoString);
