@@ -31,7 +31,7 @@ export class EventStore extends NgSimpleStateBaseStore<EventState> {
   }
 
   fetchEvents() {
-    const url = environment.apiURL + "/events";
+    const url = environment.API_URL + "/events";
     return this.http.get<ReceivedEvent[]>(url).subscribe((events: ReceivedEvent[]) => {
       const eventsMap = new Map<string, Event>();
       const eventsList: Event[] = [];

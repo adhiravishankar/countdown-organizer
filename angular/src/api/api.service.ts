@@ -13,18 +13,18 @@ export class APIService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     const event = this.createEventParams(name, fullDay, date, picture);
-    return this.http.post(environment.apiURL + "/events/", event, { headers: headers, observe: 'response', responseType: 'text' });
+    return this.http.post(environment.API_URL + "/events/", event, { headers: headers, observe: 'response', responseType: 'text' });
   }
 
   editEvent(id: string, name: string, fullDay: boolean, date: Date, patchedPicture: boolean, picture?: File): Observable<HttpResponse<string>> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     const event = this.createEventParams(name, fullDay, date, picture, patchedPicture);
-    return this.http.patch(environment.apiURL + "/events/" + id, event, {  headers: headers, observe: 'response', responseType: 'text' });
+    return this.http.patch(environment.API_URL + "/events/" + id, event, {  headers: headers, observe: 'response', responseType: 'text' });
   }
 
   deleteEvent(id: string): Observable<boolean> {
-    return this.http.delete<boolean>(environment.apiURL + "/events/" + id);
+    return this.http.delete<boolean>(environment.API_URL + "/events/" + id);
   }
 
   private createEventParams(name: string, fullDay: boolean, date: Date, picture?: File, patchedPicture?: boolean) {

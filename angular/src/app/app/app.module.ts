@@ -45,7 +45,7 @@ import {EditEventComponent} from "../edit-event/edit-event.component";
       {path: '**', component: PageNotFoundComponent}
     ]),
     NgSimpleStateModule.forRoot({
-      enableDevTool: !environment.production, // Enable Redux DevTools only in development mode
+      enableDevTool: !environment.PRODUCTION, // Enable Redux DevTools only in development mode
       enableLocalStorage: false // Local storage state persistence is globally disabled
     }),
     BrowserAnimationsModule,
