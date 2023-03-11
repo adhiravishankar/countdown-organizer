@@ -2,7 +2,7 @@ import {Express} from "express";
 import {IncomingMessage, NextFunction} from "connect";
 import {ServerResponse} from "http";
 import {EventModel} from "./Event";
-import AWS, {PutObjectCommand, S3} from "@aws-sdk/client-s3";
+import AWS, {DeleteObjectCommand, PutObjectCommand, S3} from "@aws-sdk/client-s3";
 import {Multer} from "multer";
 import mime from "mime-types";
 import { v4 as uuidv4 } from 'uuid';
@@ -59,12 +59,21 @@ export const routes = (app: Express, s3: S3, upload: Multer) => {
     });
 
     app.patch('/events/:event', (request, response) => {
-        response.json({ "Language": "Go", "Framework": "Gin", "Database": "Mongo", "Cloud": "AWS" });
+
     });
 
-    app.delete('/events/:event', (request, response) => {
+    app.delete('/events/:event', async (request, response) => {
         const eventID: string = request.params.event as string;
-        const success = EventModel.findByIdAndDelete(eventID);
-        response.json(success);
+        const event = await EventModel.findByIdAndDelete(eventID);
+
+        // Upload to S3
+        const key = event.picture.substring(process.env.S3_BUCKET_URL.length);
+        const s3Params = new DeleteObjectCommand({ Bucket: process.env.S3_BUCKET, Key: key });
+        try {
+            await s3.send(s3Params);
+        } catch (err) {
+            response.json(err);
+        }
+        response.json(true);
     });
 };

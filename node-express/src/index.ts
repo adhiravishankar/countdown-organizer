@@ -18,8 +18,7 @@ const app = express();
 app.use(morgan('dev'))
 app.use(cors())
 
-const storage = multer.memoryStorage()
-const upload = multer({ storage: storage })
+const upload = multer({ storage: multer.memoryStorage() })
 const s3 = new AWS.S3({ region: process.env.AWS_REGION });
 routes(app, s3, upload);
 

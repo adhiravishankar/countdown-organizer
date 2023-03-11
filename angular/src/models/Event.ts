@@ -22,3 +22,7 @@ export interface ReceivedEvent {
 
   fullDay: boolean;
 }
+
+export interface PatchEvent extends Event {
+  changedPicture: boolean;
+}

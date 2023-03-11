@@ -1,7 +1,12 @@
 <mat-card>
-  <mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-list *ngIf="events?.size !== 0; else eventsNotFound" cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let event of events | keyvalue">
       <app-home-event-item [id]="event.key" [event]="event.value" class="event-item"></app-home-event-item>
     </mat-grid-tile>
   </mat-grid-list>
+  <ng-template #eventsNotFound>
+    <mat-card-content >
+      <p class="mat-body-1">No events found.</p>
+    </mat-card-content>
+  </ng-template>
 </mat-card>

@@ -1,5 +1,4 @@
 import mongoose, {Schema} from "mongoose";
-import {ObjectId} from "mongodb";
 
 export interface Event {
     _id: string;

@@ -18,7 +18,7 @@ export class AddNewEventComponent {
 
   selectedFile?: File = undefined;
 
-  constructor(public apiService: APIService, private router: Router, public dialogRef: MatDialogRef<AddNewEventComponent>) {}
+  constructor(public apiService: APIService, public eventStore: EventStore, private router: Router, public dialogRef: MatDialogRef<AddNewEventComponent>) {}
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
@@ -29,7 +29,7 @@ export class AddNewEventComponent {
       const response = await this.apiService.addEvent(this.name, this.selectedFile, this.fullDay, this.date);
       response.subscribe(async (value) => {
         if (value) {
-          await this.router.navigate(['']);
+          await this.eventStore.fetchEvents();
           this.dialogRef.close();
         }
       });
