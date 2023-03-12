@@ -1,5 +1,5 @@
 use actix_web::HttpResponse;
-use actix_web::{get, post, put, patch, delete};
+use actix_web::{get, post, patch, delete};
 use actix_web::web::{Data, Json, Path};
 use mongodb::bson::oid::ObjectId;
 use crate::event_model::Event;
@@ -11,8 +11,8 @@ pub async fn create_user(db: Data<MongoRepo>, new_user: Json<Event>) -> HttpResp
     let data = Event {
         id: Uuid::new_v4().to_string(),
         name: new_user.name.to_owned(),
-        location: new_user.location.to_owned(),
-        title: new_user.title.to_owned(),
+        date: new_user.date.to_owned(),
+        full_day: new_user.full_day.to_owned(),
     };
 
     let user_detail = db.create_user(data).await;
@@ -37,21 +37,17 @@ pub async fn get_user(db: Data<MongoRepo>, path: Path<String>) -> HttpResponse {
     }
 }
 
-#[put("/user/{id}")]
-pub async fn update_user(
-    db: Data<MongoRepo>,
-    path: Path<String>,
-    new_user: Json<Event>,
-) -> HttpResponse {
+#[patch("/user/{id}")]
+pub async fn update_user(db: Data<MongoRepo>, path: Path<String>, new_user: Json<Event>) -> HttpResponse {
     let id = path.into_inner();
     if id.is_empty() {
         return HttpResponse::BadRequest().body("invalid ID");
     };
-    let data = User {
-        id: Some(ObjectId::parse_str(&id).unwrap()),
+    let data = Event {
+        id: Uuid::new_v4().to_string(),
         name: new_user.name.to_owned(),
-        location: new_user.location.to_owned(),
-        title: new_user.title.to_owned(),
+        date: new_user.date.to_owned(),
+        full_day: new_user.full_day.to_owned(),
     };
 
     let update_result = db.update_user(&id, data).await;
