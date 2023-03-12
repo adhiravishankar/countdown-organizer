@@ -1,3 +1,7 @@
 
 node-express/.env
 angular/.env
+
+**/.env
+rust/target
+rust/.idea
