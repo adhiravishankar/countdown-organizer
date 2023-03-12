@@ -26,4 +26,4 @@ const upload = multer({ storage: multer.memoryStorage() })
 const s3 = new AWS.S3({ region: process.env.AWS_REGION });
 routes(app, s3, upload);
 
-app.listen(5000, () => console.log('Listening on port 5000'));
+app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}!`));
