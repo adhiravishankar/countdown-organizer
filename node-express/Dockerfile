@@ -12,4 +12,4 @@ RUN npm run build
 
 EXPOSE 6100
 
-CMD ["pm2-runtime", "./build/index.js"]
+CMD ["pm2-runtime", "npm", "--", "run", "serve"]
