@@ -1,5 +1,7 @@
 FROM node:lts-alpine as builder
 
+RUN npm install -g pm2
+
 COPY . /app
 
 WORKDIR /app
@@ -10,4 +12,4 @@ RUN npm run build
 
 EXPOSE 6100
 
-CMD ["npm", "run", "serve"]
+CMD ["pm2-runtime", "./build/index.js"]
