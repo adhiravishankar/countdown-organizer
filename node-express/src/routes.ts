@@ -13,7 +13,7 @@ export type NextHandleFunction = (req: IncomingMessage, res: ServerResponse, nex
 export const routes = (app: Express, s3: S3, upload: Multer) => {
 
     app.get('/about', (request, response) => {
-        response.json({ "Language": "Go", "Framework": "Gin", "Database": "Mongo", "Cloud": "AWS" });
+        response.json({ "Language": "Typescript", "Framework": "Express", "Database": "Mongo", "Cloud": "AWS" });
     });
 
     app.get('/events', async (request, response) => {

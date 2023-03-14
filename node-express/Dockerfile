@@ -10,6 +10,6 @@ RUN npm install
 
 RUN npm run build
 
-EXPOSE 6100
+EXPOSE 7011
 
 CMD ["pm2-runtime", "npm", "--", "run", "serve"]
