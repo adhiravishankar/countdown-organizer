@@ -1,6 +1,6 @@
 
 export interface Event {
-    _id: string;
+    id: string;
 
     name: string;
 
@@ -12,7 +12,7 @@ export interface Event {
 }
 
 export interface ReceivedEvent {
-  _id: string;
+  id: string;
 
   name: string;
 
