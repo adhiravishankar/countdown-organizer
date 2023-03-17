@@ -1,14 +1,10 @@
 import {Express} from "express";
-import {IncomingMessage, NextFunction} from "connect";
-import {ServerResponse} from "http";
-import {EventModel} from "./Event";
+import { convertEventToFrontendEvent, EventModel, Event, FrontendEvent } from "./Event";
 import AWS, {DeleteObjectCommand, PutObjectCommand, S3} from "@aws-sdk/client-s3";
 import {Multer} from "multer";
 import mime from "mime-types";
 import { v4 as uuidv4 } from 'uuid';
 import parseISO from "date-fns/parseISO";
-
-export type NextHandleFunction = (req: IncomingMessage, res: ServerResponse, next: NextFunction) => void;
 
 export const routes = (app: Express, s3: S3, upload: Multer) => {
 
@@ -17,8 +13,9 @@ export const routes = (app: Express, s3: S3, upload: Multer) => {
     });
 
     app.get('/events', async (request, response) => {
-        const events = await EventModel.find();
-        await response.json(events);
+        const events: Event[] = await EventModel.find();
+        const frontendEvents: FrontendEvent[] = events.map((event: Event) => convertEventToFrontendEvent(event));
+        await response.json(frontendEvents);
     });
 
     app.post('/events', upload.single('picture'), async (request, response) => {
@@ -52,10 +49,11 @@ export const routes = (app: Express, s3: S3, upload: Multer) => {
         response.send(uuid)
     });
 
-    app.get('/events/:event', (request, response) => {
+    app.get('/events/:event', async (request, response) => {
         const eventID: string = request.params.event as string;
-        const event = EventModel.findById(eventID);
-        response.json(event);
+        const event = await EventModel.findById(eventID);
+        const frontendEvent: FrontendEvent = convertEventToFrontendEvent(event as unknown as Event);
+        response.json(frontendEvent);
     });
 
     app.patch('/events/:event', upload.single('picture'), async (request, response) => {
