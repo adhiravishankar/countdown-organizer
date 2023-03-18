@@ -37,7 +37,7 @@ export class EventStore extends NgSimpleStateBaseStore<EventState> {
       const eventsList: Event[] = [];
       events.forEach((event: ReceivedEvent) => {
         const date = parseISO(event.date);
-        eventsMap.set(event._id, { ...event, date });
+        eventsMap.set(event.id, { ...event, date });
         eventsList.push({ ...event, date });
       });
       this.setState(() => ({ events: eventsMap, eventsList }), 'fetch');

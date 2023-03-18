@@ -32,11 +32,17 @@ export class AppComponent {
     this.dialog.open(AddNewEventComponent, { width: '30rem', enterAnimationDuration: '0ms', exitAnimationDuration: '0ms' });
   }
 
-  delete() {
+  async delete() {
     const url = this.router.url;
     const id = url.substring(url.lastIndexOf('/') + 1);
-    this.api.deleteEvent(id).subscribe(async () => {
-      await this.router.navigate(['']);
+    const response = await this.api.deleteEvent(id);
+    console.log(response);
+    response.subscribe(async (resp) => {
+      console.log(resp);
+      if (response) {
+        await this.eventStore.fetchEvents();
+        await this.router.navigateByUrl('/');
+      }
     });
   }
 

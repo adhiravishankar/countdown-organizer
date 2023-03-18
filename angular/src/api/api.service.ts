@@ -9,6 +9,10 @@ import {Observable} from "rxjs";
 export class APIService {
   constructor(private http: HttpClient) { }
 
+  about(): Observable<HttpResponse<string>> {
+    return this.http.get(environment.API_URL + "/about", { observe: 'response', responseType: 'text' });
+  }
+
   addEvent(name: string, picture: File, fullDay: boolean, date: Date): Observable<HttpResponse<string>> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
@@ -23,8 +27,8 @@ export class APIService {
     return this.http.patch(environment.API_URL + "/events/" + id, event, {  headers: headers, observe: 'response', responseType: 'text' });
   }
 
-  deleteEvent(id: string): Observable<boolean> {
-    return this.http.delete<boolean>(environment.API_URL + "/events/" + id);
+  deleteEvent(id: string): Observable<HttpResponse<string>> {
+    return this.http.delete(environment.API_URL + "/events/" + id, {  observe: 'response', responseType: 'text' });
   }
 
   private createEventParams(name: string, fullDay: boolean, date: Date, picture?: File, patchedPicture?: boolean) {
