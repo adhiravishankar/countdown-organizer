@@ -1,0 +1,5 @@
+<mat-card class="card-about">
+  <h1>About</h1>
+  <span *ngFor="let item of aboutMap | keyvalue">{{ item.key }}: {{ item.value }}</span>
+</mat-card>
+

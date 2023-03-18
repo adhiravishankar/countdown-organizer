@@ -9,6 +9,10 @@ import {Observable} from "rxjs";
 export class APIService {
   constructor(private http: HttpClient) { }
 
+  about(): Observable<HttpResponse<string>> {
+    return this.http.get(environment.API_URL + "/about", { observe: 'response', responseType: 'text' });
+  }
+
   addEvent(name: string, picture: File, fullDay: boolean, date: Date): Observable<HttpResponse<string>> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
