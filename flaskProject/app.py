@@ -4,14 +4,14 @@ from flask_cors import CORS
 from db import db
 from routes import routes
 
-from dotenv import load_dotenv
+from dotenv import dotenv_values
 
-load_dotenv()
+config = dotenv_values('.env')
 
 app = Flask(__name__)
 
 # configure the SQLite database, relative to the app instance folder
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = config["DATABASE_URL"]
 app.register_blueprint(routes)
 CORS(app)
 

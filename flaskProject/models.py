@@ -19,9 +19,6 @@ class Event(db.Model):
             'id': self.id,
             'name': self.name,
             'date': datetime.isoformat(self.date),
-            'picture': self.picture,
+            'picture': str(self.picture or ''),
             'fullDay': str(self.full_day)
         }
-
-    def to_json(self):
-        return json.dumps(self.to_dict())
