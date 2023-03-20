@@ -1,6 +1,8 @@
 mod events_api;
 mod event_model;
 mod event_repo;
+mod event_routes;
+mod event_models;
 
 use std::sync::Mutex;
 use actix_web::{App, HttpResponse, HttpServer, web};
@@ -42,6 +44,11 @@ async fn main() -> std::io::Result<()> {
             .app_data(counter.clone()) // <- register the created data
             .route("/", web::get().to(index))
             .route("/about", web::get().to(about))
+            .route("/events", web::get().to(about))
+            .route("/events", web::post().to(about))
+            .route("/events/{event}", web::get().to(about))
+            .route("/events/{event}", web::patch().to(about))
+            .route("/events/{event}", web::delete().to(about))
     })
         .bind(("localhost", 6001))?
         .run()
