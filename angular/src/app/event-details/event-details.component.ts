@@ -31,14 +31,22 @@ export class EventDetailsComponent {
   }
 
   relativeTimeText() {
-    if (this.event != null && this.relativeTime != null) {
-      return this.relativeTime ? humanizeDuration(this.event.date.getTime() - new Date().getTime(), {
-        largest: 2,
-        round: true
-      }) : this.event.date.toDateString();
+    if (this.event != null) {
+      if (this.relativeTime != null) {
+        return this.relativeTime ? humanizeDuration(this.event.date.getTime() - new Date().getTime(), {
+          largest: 2,
+          round: true
+        }) : this.toDateTimeString();
+      } else {
+        return this.toDateTimeString();
+      }
     } else {
-      return this.event?.date.toDateString();
+      return "";
     }
+  }
+
+  toDateTimeString() {
+    return this.event?.fullDay ? this.event?.date.toDateString() : this.event?.date.toLocaleString();
   }
 
   onToggleDate() {
