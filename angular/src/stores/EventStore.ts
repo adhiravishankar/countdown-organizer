@@ -10,6 +10,8 @@ export interface EventState {
   events: Map<string, Event>;
 
   eventsList: Event[];
+
+  relativeTime: boolean;
 }
 
 @Injectable()
@@ -27,7 +29,7 @@ export class EventStore extends NgSimpleStateBaseStore<EventState> {
 
   initialState(): EventState {
     const eventsMap = new Map<string, Event>();
-    return { events: eventsMap, eventsList: [] };
+    return { events: eventsMap, eventsList: [], relativeTime: false };
   }
 
   fetchEvents() {
@@ -50,5 +52,13 @@ export class EventStore extends NgSimpleStateBaseStore<EventState> {
 
   getEvent(id: string): Observable<Event> {
     return this.selectState(state => state.events.get(id) as Event);
+  }
+
+  toggleRelativeTime() {
+    this.setState(state => ({ relativeTime: !state.relativeTime }), 'toggleRelativeTime');
+  }
+
+  getRelativeTime(): Observable<boolean> {
+    return this.selectState(state => state.relativeTime);
   }
 }
